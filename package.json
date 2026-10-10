@@ -10,6 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "build:static": "NEXT_PUBLIC_STATIC_EXPORT=true next build",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:generate": "prisma generate",
