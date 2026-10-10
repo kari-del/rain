@@ -26,16 +26,16 @@ export function CategorySection({ category, limit = 6, showViewAll = true }: Cat
   if (sites.length === 0) return null;
 
   return (
-    <section className="mb-12">
-      <div className="flex items-center justify-between mb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center">
-            <IconComponent className="h-5 w-5 text-primary" />
+    <section className="mb-8 md:mb-12">
+      <div className="flex items-center justify-between mb-3 md:mb-4">
+        <div className="flex items-center gap-2 md:gap-3">
+          <div className="w-8 h-8 md:w-9 md:h-9 rounded-lg bg-primary/10 flex items-center justify-center">
+            <IconComponent className="h-4 w-4 md:h-5 md:w-5 text-primary" />
           </div>
           <div>
-            <h2 className="text-xl font-bold">{category.name}</h2>
+            <h2 className="text-base md:text-xl font-bold">{category.name}</h2>
             {category.description && (
-              <p className="text-sm text-muted-foreground">{category.description}</p>
+              <p className="text-xs md:text-sm text-muted-foreground hidden md:block">{category.description}</p>
             )}
           </div>
         </div>
@@ -48,9 +48,9 @@ export function CategorySection({ category, limit = 6, showViewAll = true }: Cat
                 ? `/games/${category.id}`
                 : `/category/${category.id}`
             }
-            className="text-sm text-primary flex items-center gap-1 hover:gap-2 transition-all shrink-0"
+            className="text-xs md:text-sm text-primary flex items-center gap-1 hover:gap-2 transition-all shrink-0"
           >
-            查看全部 <ArrowRight className="h-4 w-4" />
+            查看全部 <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
           </Link>
         )}
       </div>

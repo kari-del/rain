@@ -65,15 +65,15 @@ export function SiteCard({ site, className, dbId }: SiteCardProps) {
         className
       )}
     >
-      <div className="p-4">
-        <div className="flex items-start gap-3 mb-3">
+      <div className="p-3 md:p-4">
+        <div className="flex items-start gap-2.5 md:gap-3 mb-2 md:mb-3">
           {/* Logo / Favicon / Emoji */}
-          <div className="w-10 h-10 rounded-lg bg-muted flex items-center justify-center shrink-0 overflow-hidden">
+          <div className="w-9 h-9 md:w-10 md:h-10 rounded-lg bg-muted flex items-center justify-center shrink-0 overflow-hidden">
             {site.logo && faviconStage < 3 ? (
               <img
                 src={site.logo}
                 alt={site.name}
-                className="w-8 h-8 object-contain"
+                className="w-7 h-7 md:w-8 md:h-8 object-contain"
                 onError={handleFaviconError}
                 loading="lazy"
               />
@@ -81,7 +81,7 @@ export function SiteCard({ site, className, dbId }: SiteCardProps) {
               <img
                 src={getFaviconUrl(site.url)}
                 alt={site.name}
-                className="w-6 h-6 object-contain"
+                className="w-5 h-5 md:w-6 md:h-6 object-contain"
                 onError={handleFaviconError}
                 loading="lazy"
               />
@@ -89,7 +89,7 @@ export function SiteCard({ site, className, dbId }: SiteCardProps) {
               <img
                 src={getFaviconFallbackUrl(site.url)}
                 alt={site.name}
-                className="w-6 h-6 object-contain"
+                className="w-5 h-5 md:w-6 md:h-6 object-contain"
                 onError={handleFaviconError}
                 loading="lazy"
               />
@@ -97,12 +97,12 @@ export function SiteCard({ site, className, dbId }: SiteCardProps) {
               <img
                 src={getFaviconDirectUrl(site.url)}
                 alt={site.name}
-                className="w-6 h-6 object-contain"
+                className="w-5 h-5 md:w-6 md:h-6 object-contain"
                 onError={handleFaviconError}
                 loading="lazy"
               />
             ) : site.emoji ? (
-              <span className="text-2xl leading-none">{site.emoji}</span>
+              <span className="text-xl md:text-2xl leading-none">{site.emoji}</span>
             ) : (
               <span className="text-sm font-bold text-muted-foreground">
                 {getInitials(site.name)}
@@ -111,7 +111,7 @@ export function SiteCard({ site, className, dbId }: SiteCardProps) {
           </div>
 
           <div className="flex-1 min-w-0">
-            <div className="flex items-center gap-2 mb-0.5">
+            <div className="flex items-center gap-1.5 mb-0.5">
               <h3 className="font-semibold text-sm truncate group-hover:text-primary transition-colors">
                 {site.name}
               </h3>
@@ -138,28 +138,28 @@ export function SiteCard({ site, className, dbId }: SiteCardProps) {
           <Button
             variant="ghost"
             size="icon"
-            className="h-8 w-8 shrink-0 -mr-2 -mt-1"
+            className="h-7 w-7 md:h-8 md:w-8 shrink-0 -mr-1 -mt-0.5"
             onClick={handleFavoriteClick}
             aria-label={faved ? "取消收藏" : "收藏"}
           >
             <Star
               className={cn(
-                "h-4 w-4 transition-all",
+                "h-3.5 w-3.5 md:h-4 md:w-4 transition-all",
                 faved ? "fill-yellow-400 text-yellow-400" : "text-muted-foreground"
               )}
             />
           </Button>
         </div>
 
-        {/* 标签 */}
-        <div className="flex flex-wrap gap-1.5 mb-3">
+        {/* 标签 - 移动端减少显示数量 */}
+        <div className="flex flex-wrap gap-1 md:gap-1.5 mb-2 md:mb-3">
           {region && (
             <Badge variant={region.variant} className="text-[10px] font-normal">
               {region.label}
             </Badge>
           )}
           {site.language && site.language !== "multi" && (
-            <Badge variant="info" className="text-[10px] font-normal">
+            <Badge variant="info" className="text-[10px] font-normal hidden sm:inline-flex">
               {languageMap[site.language] || site.language}
             </Badge>
           )}
@@ -169,14 +169,14 @@ export function SiteCard({ site, className, dbId }: SiteCardProps) {
             </Badge>
           )}
           {site.tags.includes("官方") && (
-            <Badge variant="warning" className="text-[10px] font-normal">
+            <Badge variant="warning" className="text-[10px] font-normal hidden sm:inline-flex">
               官方
             </Badge>
           )}
-          {site.tags.slice(0, 2).map((tag) => {
+          {site.tags.slice(0, 1).map((tag) => {
             if (["免费", "官方", "国内可直连"].includes(tag)) return null;
             return (
-              <Badge key={tag} variant="secondary" className="text-[10px] font-normal">
+              <Badge key={tag} variant="secondary" className="text-[10px] font-normal hidden md:inline-flex">
                 {tag}
               </Badge>
             );
@@ -187,7 +187,7 @@ export function SiteCard({ site, className, dbId }: SiteCardProps) {
         <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-border/50">
           <div className="flex items-center gap-1 truncate">
             <Globe className="h-3 w-3 shrink-0" />
-            <span className="truncate">{domain}</span>
+            <span className="truncate text-[11px] md:text-xs">{domain}</span>
           </div>
           <ExternalLink className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity shrink-0" />
         </div>

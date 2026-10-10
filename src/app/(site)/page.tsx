@@ -66,34 +66,34 @@ export default function HomePage() {
   const kaoyanCats = getCategoriesByType("kaoyan");
 
   return (
-    <div className="container py-10 md:py-16">
+    <div className="container py-6 md:py-10 lg:py-16 px-4 md:px-6">
       {/* Hero */}
-      <section className="text-center mb-16 animate-fade-in">
-        <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary mb-6">
-          <Sparkles className="h-4 w-4" />
+      <section className="text-center mb-10 md:mb-16 animate-fade-in">
+        <div className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-xs md:text-sm font-medium text-primary mb-4 md:mb-6">
+          <Sparkles className="h-3.5 w-3.5 md:h-4 md:w-4" />
           学生专属学习导航
         </div>
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-4 text-balance">
+        <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight mb-3 md:mb-4 text-balance">
           一站式学习入口，
           <span className="text-primary">高效学习每一天</span>
         </h1>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+        <p className="text-sm md:text-lg text-muted-foreground max-w-2xl mx-auto mb-6 md:mb-8 px-2">
           面向学生的一站式学习入口，精选优质 AI 工具、快捷工具、游戏兴趣、考研资料与外语学习资源
         </p>
 
-        <div className="flex items-center justify-center gap-4">
-          <Link href="/ai" className={buttonVariants({ size: "lg" })}>
+        <div className="flex items-center justify-center gap-3">
+          <Link href="/ai" className={buttonVariants({ size: "default" })}>
               开始探索 <ArrowRight className="h-4 w-4" />
           </Link>
-          <Link href="/about" className={buttonVariants({ variant: "outline", size: "lg" })}>
+          <Link href="/about" className={buttonVariants({ variant: "outline", size: "default" })}>
             了解更多
           </Link>
         </div>
       </section>
 
-      {/* 三大板块入口 */}
-      <section className="mb-16">
-        <div className="grid md:grid-cols-3 gap-6">
+      {/* 五大板块入口 */}
+      <section className="mb-10 md:mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-6">
           {sections.map((section) => {
             const Icon = section.icon;
             const catCount = categories.filter((c) => c.type === section.type).length;
@@ -103,22 +103,22 @@ export default function HomePage() {
             return (
               <Link key={section.href} href={section.href}>
                 <Card className="h-full overflow-hidden group hover:shadow-lg transition-all duration-300 hover:-translate-y-1">
-                  <CardContent className="p-6">
+                  <CardContent className="p-4 md:p-6">
                     <div
-                      className={`w-12 h-12 rounded-xl bg-gradient-to-br ${section.color} flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+                      className={`w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br ${section.color} flex items-center justify-center mb-3 md:mb-4 group-hover:scale-110 transition-transform`}
                     >
-                      <Icon className="h-6 w-6 text-white" />
+                      <Icon className="h-5 w-5 md:h-6 md:w-6 text-white" />
                     </div>
-                    <h3 className="text-xl font-semibold mb-2">{section.title}</h3>
-                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2">
+                    <h3 className="text-base md:text-xl font-semibold mb-1 md:mb-2">{section.title}</h3>
+                    <p className="text-muted-foreground text-xs md:text-sm mb-3 md:mb-4 line-clamp-2 hidden md:block">
                       {section.description}
                     </p>
                     <div className="flex items-center justify-between">
-                      <span className="text-xs text-muted-foreground">
+                      <span className="text-[10px] md:text-xs text-muted-foreground">
                         {catCount} 分类 · {siteCount} 站点
                       </span>
-                      <span className="text-primary text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
-                        浏览 <ArrowRight className="h-4 w-4" />
+                      <span className="text-primary text-xs md:text-sm font-medium flex items-center gap-1 group-hover:gap-2 transition-all">
+                        浏览 <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
                       </span>
                     </div>
                   </CardContent>
@@ -131,10 +131,10 @@ export default function HomePage() {
 
       {/* 热门推荐 */}
       {hotSites.length > 0 && (
-        <section className="mb-16">
-          <div className="flex items-center gap-2 mb-6">
-            <TrendingUp className="h-5 w-5 text-primary" />
-            <h2 className="text-2xl font-bold">热门推荐</h2>
+        <section className="mb-10 md:mb-16">
+          <div className="flex items-center gap-2 mb-4 md:mb-6">
+            <TrendingUp className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+            <h2 className="text-lg md:text-2xl font-bold">热门推荐</h2>
           </div>
           <SiteGrid sites={hotSites} />
         </section>
@@ -151,20 +151,20 @@ export default function HomePage() {
       ))}
 
       {/* 外语板块预览入口 */}
-      <section className="mt-12 mb-8">
-        <div className="flex items-center justify-between mb-6">
+      <section className="mt-8 md:mt-12 mb-6 md:mb-8">
+        <div className="flex items-center justify-between mb-4 md:mb-6">
           <div className="flex items-center gap-2">
-            <Languages className="h-5 w-5 text-primary" />
-            <h2 className="text-2xl font-bold">外语学习</h2>
+            <Languages className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+            <h2 className="text-lg md:text-2xl font-bold">外语学习</h2>
           </div>
           <Link
             href="/language"
-            className="text-sm text-primary flex items-center gap-1 hover:gap-2 transition-all"
+            className="text-xs md:text-sm text-primary flex items-center gap-1 hover:gap-2 transition-all"
           >
-            查看全部 <ArrowRight className="h-4 w-4" />
+            查看全部 <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+        <div className="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-6 gap-2 md:gap-4">
           {langCats.map((cat, idx) => {
             const colors = [
               "from-blue-500 to-cyan-500",
@@ -178,18 +178,18 @@ export default function HomePage() {
             return (
               <Link key={cat.id} href={`/language/${cat.id}`}>
                 <Card className="h-full group hover:shadow-md transition-all hover:-translate-y-0.5">
-                  <CardContent className="p-4 text-center">
+                  <CardContent className="p-3 md:p-4 text-center">
                     <div
-                      className={`w-12 h-12 mx-auto rounded-xl bg-gradient-to-br ${colors[idx % colors.length]} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}
+                      className={`w-10 h-10 md:w-12 md:h-12 mx-auto rounded-xl bg-gradient-to-br ${colors[idx % colors.length]} flex items-center justify-center mb-2 md:mb-3 group-hover:scale-110 transition-transform`}
                     >
                       {cat.emoji ? (
-                        <span className="text-2xl leading-none">{cat.emoji}</span>
+                        <span className="text-xl md:text-2xl leading-none">{cat.emoji}</span>
                       ) : (
-                        <Languages className="h-6 w-6 text-white" />
+                        <Languages className="h-5 w-5 md:h-6 md:w-6 text-white" />
                       )}
                     </div>
-                    <h3 className="font-semibold text-sm">{cat.name}</h3>
-                    <p className="text-xs text-muted-foreground mt-1">{count} 个站点</p>
+                    <h3 className="font-semibold text-xs md:text-sm">{cat.name}</h3>
+                    <p className="text-[10px] md:text-xs text-muted-foreground mt-0.5 md:mt-1">{count} 个站点</p>
                   </CardContent>
                 </Card>
               </Link>
@@ -199,20 +199,20 @@ export default function HomePage() {
       </section>
 
       {/* 游戏兴趣板块预览入口 */}
-      <section className="mt-12 mb-8">
-        <div className="flex items-center justify-between mb-6">
+      <section className="mt-8 md:mt-12 mb-6 md:mb-8">
+        <div className="flex items-center justify-between mb-4 md:mb-6">
           <div className="flex items-center gap-2">
-            <Gamepad2 className="h-5 w-5 text-primary" />
-            <h2 className="text-2xl font-bold">游戏兴趣</h2>
+            <Gamepad2 className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+            <h2 className="text-lg md:text-2xl font-bold">游戏兴趣</h2>
           </div>
           <Link
             href="/games"
-            className="text-sm text-primary flex items-center gap-1 hover:gap-2 transition-all"
+            className="text-xs md:text-sm text-primary flex items-center gap-1 hover:gap-2 transition-all"
           >
-            查看全部 <ArrowRight className="h-4 w-4" />
+            查看全部 <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 md:gap-4">
           {gameCats.map((cat, idx) => {
             const colors = [
               "from-rose-500 to-orange-500",
@@ -225,18 +225,18 @@ export default function HomePage() {
             return (
               <Link key={cat.id} href={`/games/${cat.id}`}>
                 <Card className="h-full group hover:shadow-md transition-all hover:-translate-y-0.5">
-                  <CardContent className="p-4 text-center">
+                  <CardContent className="p-3 md:p-4 text-center">
                     <div
-                      className={`w-12 h-12 mx-auto rounded-xl bg-gradient-to-br ${colors[idx % colors.length]} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}
+                      className={`w-10 h-10 md:w-12 md:h-12 mx-auto rounded-xl bg-gradient-to-br ${colors[idx % colors.length]} flex items-center justify-center mb-2 md:mb-3 group-hover:scale-110 transition-transform`}
                     >
                       {cat.emoji ? (
-                        <span className="text-2xl leading-none">{cat.emoji}</span>
+                        <span className="text-xl md:text-2xl leading-none">{cat.emoji}</span>
                       ) : (
-                        <Gamepad2 className="h-6 w-6 text-white" />
+                        <Gamepad2 className="h-5 w-5 md:h-6 md:w-6 text-white" />
                       )}
                     </div>
-                    <h3 className="font-semibold text-sm">{cat.name}</h3>
-                    <p className="text-xs text-muted-foreground mt-1">{count} 个站点</p>
+                    <h3 className="font-semibold text-xs md:text-sm">{cat.name}</h3>
+                    <p className="text-[10px] md:text-xs text-muted-foreground mt-0.5 md:mt-1">{count} 个站点</p>
                   </CardContent>
                 </Card>
               </Link>
@@ -246,20 +246,20 @@ export default function HomePage() {
       </section>
 
       {/* 考研资料板块预览入口 */}
-      <section className="mt-12 mb-8">
-        <div className="flex items-center justify-between mb-6">
+      <section className="mt-8 md:mt-12 mb-6 md:mb-8">
+        <div className="flex items-center justify-between mb-4 md:mb-6">
           <div className="flex items-center gap-2">
-            <GraduationCap className="h-5 w-5 text-primary" />
-            <h2 className="text-2xl font-bold">考研资料</h2>
+            <GraduationCap className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+            <h2 className="text-lg md:text-2xl font-bold">考研资料</h2>
           </div>
           <Link
             href="/kaoyan"
-            className="text-sm text-primary flex items-center gap-1 hover:gap-2 transition-all"
+            className="text-xs md:text-sm text-primary flex items-center gap-1 hover:gap-2 transition-all"
           >
-            查看全部 <ArrowRight className="h-4 w-4" />
+            查看全部 <ArrowRight className="h-3 w-3 md:h-4 md:w-4" />
           </Link>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="grid grid-cols-3 sm:grid-cols-5 md:grid-cols-5 gap-2 md:gap-4">
           {kaoyanCats.map((cat, idx) => {
             const colors = [
               "from-blue-500 to-indigo-600",
@@ -272,18 +272,18 @@ export default function HomePage() {
             return (
               <Link key={cat.id} href={`/kaoyan/${cat.id}`}>
                 <Card className="h-full group hover:shadow-md transition-all hover:-translate-y-0.5">
-                  <CardContent className="p-4 text-center">
+                  <CardContent className="p-3 md:p-4 text-center">
                     <div
-                      className={`w-12 h-12 mx-auto rounded-xl bg-gradient-to-br ${colors[idx % colors.length]} flex items-center justify-center mb-3 group-hover:scale-110 transition-transform`}
+                      className={`w-10 h-10 md:w-12 md:h-12 mx-auto rounded-xl bg-gradient-to-br ${colors[idx % colors.length]} flex items-center justify-center mb-2 md:mb-3 group-hover:scale-110 transition-transform`}
                     >
                       {cat.emoji ? (
-                        <span className="text-2xl leading-none">{cat.emoji}</span>
+                        <span className="text-xl md:text-2xl leading-none">{cat.emoji}</span>
                       ) : (
-                        <GraduationCap className="h-6 w-6 text-white" />
+                        <GraduationCap className="h-5 w-5 md:h-6 md:w-6 text-white" />
                       )}
                     </div>
-                    <h3 className="font-semibold text-sm">{cat.name}</h3>
-                    <p className="text-xs text-muted-foreground mt-1">{count} 个站点</p>
+                    <h3 className="font-semibold text-xs md:text-sm">{cat.name}</h3>
+                    <p className="text-[10px] md:text-xs text-muted-foreground mt-0.5 md:mt-1">{count} 个站点</p>
                   </CardContent>
                 </Card>
               </Link>

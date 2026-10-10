@@ -33,9 +33,9 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur-sm">
-      <div className="container flex h-16 items-center gap-4">
-        <Link href="/" className="flex items-center gap-2 font-bold text-lg shrink-0">
-          <img src="/logo-sheep.png" alt="xiaoyang.com" className="h-8 w-8 rounded-lg" />
+      <div className="container flex h-14 md:h-16 items-center gap-2 md:gap-4">
+        <Link href="/" className="flex items-center gap-2 font-bold text-base md:text-lg shrink-0">
+          <img src="/logo-sheep.png" alt="xiaoyang.com" className="h-7 w-7 md:h-8 md:w-8 rounded-lg" />
           <span className="hidden sm:inline">xiaoyang.com</span>
         </Link>
 
@@ -61,8 +61,8 @@ export function SiteHeader() {
           })}
         </nav>
 
-        {/* 搜索框 */}
-        <div className="flex-1 max-w-md mx-auto">
+        {/* 搜索框 - 桌面端 */}
+        <div className="hidden sm:block flex-1 max-w-md mx-auto">
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
@@ -72,7 +72,13 @@ export function SiteHeader() {
           </div>
         </div>
 
-        <div className="flex items-center gap-1 shrink-0">
+        <div className="flex items-center gap-0.5 md:gap-1 shrink-0 ml-auto sm:ml-0">
+          {/* 移动端搜索按钮 */}
+          <Link href="/ai" className="sm:hidden">
+            <Button variant="ghost" size="icon" aria-label="搜索">
+              <Search className="h-5 w-5" />
+            </Button>
+          </Link>
           <Link href="/favorites">
             <Button variant="ghost" size="icon" aria-label="我的收藏">
               <Star className="h-5 w-5" />
@@ -83,8 +89,19 @@ export function SiteHeader() {
         </div>
       </div>
 
-      {/* 移动端底部导航 Tab */}
-      <nav className="md:hidden flex items-center justify-around border-t bg-background px-2 py-1">
+      {/* 移动端搜索框 - 小屏幕显示在导航下方 */}
+      <div className="sm:hidden px-4 pb-3 pt-0">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            placeholder="搜索 AI 工具、学习网站..."
+            className="pl-10 w-full h-9"
+          />
+        </div>
+      </div>
+
+      {/* 移动端底部导航 Tab - 适配安全区域 */}
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 flex items-center justify-around border-t bg-background/95 backdrop-blur-sm px-1 pb-[env(safe-area-inset-bottom)] pt-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
@@ -92,14 +109,14 @@ export function SiteHeader() {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex flex-col items-center gap-0.5 px-4 py-1.5 rounded-md text-xs font-medium transition-colors",
+                "flex flex-col items-center gap-0.5 px-2 py-1.5 rounded-md text-[10px] md:text-xs font-medium transition-colors flex-1 max-w-[80px]",
                 isActive(item.href)
                   ? "text-primary"
                   : "text-muted-foreground"
               )}
             >
               <Icon className="h-5 w-5" />
-              {item.label}
+              <span className="truncate w-full text-center">{item.label}</span>
             </Link>
           );
         })}
