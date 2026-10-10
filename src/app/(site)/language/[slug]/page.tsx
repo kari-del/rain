@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LanguageDetailClient } from "@/components/language/language-detail-client";
-import { getCategoryById } from "@/content/categories";
+import { categories, getCategoryById } from "@/content/categories";
 import { buildMetadata } from "@/lib/metadata";
 
 interface PageProps {
   params: { slug: string };
+}
+
+export function generateStaticParams() {
+  return categories
+    .filter((c) => c.type === "language")
+    .map((c) => ({ slug: c.id }));
 }
 
 export function generateMetadata({ params }: PageProps): Metadata {
