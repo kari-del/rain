@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Mail, Shield, Heart } from "lucide-react";
+import { Mail, Heart } from "lucide-react";
 
 export function SiteFooter() {
   return (
