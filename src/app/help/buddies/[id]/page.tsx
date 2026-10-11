@@ -9,7 +9,7 @@ export function generateStaticParams() {
   return [];
 }
 
-export const dynamicParams = true;
+export const dynamicParams = false;
 
 export default function BuddyDetailPage({ params }: PageProps) {
   return <BuddyDetailClient />;
