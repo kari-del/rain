@@ -10,7 +10,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "build:static": "NEXT_PUBLIC_STATIC_EXPORT=true next build",
+    "build:static": "mv src/app/api src/app/_api_tmp && NEXT_PUBLIC_STATIC_EXPORT=true next build; mv src/app/_api_tmp src/app/api",
     "db:push": "prisma db push",
     "db:seed": "prisma db seed",
     "db:generate": "prisma generate",
