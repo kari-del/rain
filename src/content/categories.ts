@@ -165,6 +165,15 @@ export const categories: Category[] = [
     sortOrder: 11,
     description: "视频、音乐、直播、社区等影音娱乐平台",
   },
+  {
+    id: "anime",
+    type: "tool",
+    name: "动漫",
+    icon: "Sparkles",
+    emoji: "🌸",
+    sortOrder: 12,
+    description: "正版动画、正版漫画与追番社区，不收录盗版聚合站",
+  },
 
   // ========== 外语学习（6 类） ==========
   {
